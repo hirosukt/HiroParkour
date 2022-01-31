@@ -1,0 +1,8 @@
+name: HiroParkour
+version: '${version}'
+main: works.hirosuke.hiroparkour.HiroParkour
+api-version: 1.18
+prefix: HiroParkour
+authors: [ Hirosuke ]
+description: Original parkour social plugin for HiroServer.
+website: hirosuke.works
