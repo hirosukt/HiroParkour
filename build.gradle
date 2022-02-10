@@ -21,6 +21,11 @@ repositories {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.jetbrains.exposed:exposed-core:0.35.1'
+    implementation 'org.jetbrains.exposed:exposed-dao:0.35.1'
+    implementation 'org.jetbrains.exposed:exposed-jdbc:0.35.1'
+    implementation 'org.jetbrains.exposed:exposed-java-time:0.35.1'
+    implementation 'mysql:mysql-connector-java:8.0.26'
 }
 
 def targetJavaVersion = 17
@@ -30,6 +35,15 @@ java {
     targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+jar {
+    from {
+        duplicatesStrategy 'exclude'
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
     }
 }
 

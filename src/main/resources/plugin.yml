@@ -6,3 +6,14 @@ prefix: HiroParkour
 authors: [ Hirosuke ]
 description: Original parkour social plugin for HiroServer.
 website: hirosuke.works
+commands:
+  stage:
+    aliases:
+      - st
+permissions:
+  parkour.command.*:
+    default: op
+    children:
+      parkour.command.stage: true
+  parkour.command.stage:
+    default: op
